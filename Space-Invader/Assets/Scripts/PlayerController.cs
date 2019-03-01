@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Audio;
 using UnityEngine;
 
 [System.Serializable]
@@ -38,6 +39,7 @@ public class PlayerController : MonoBehaviour
 
             nextFire -= myTime;
             myTime = 0.0F;
+            GetComponent<AudioSource>().Play();
         }
     }
     private void FixedUpdate()
