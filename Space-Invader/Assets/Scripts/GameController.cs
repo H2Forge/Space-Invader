@@ -10,13 +10,14 @@ public class GameController : MonoBehaviour
     public Text scoreText;
     public Text restartText;
     public Text gameOverText;
+    public GameObject exitButton;
 
     private int score;
     private bool restart;
     private bool gameOver;
 
     [Header("Hazards Params")]
-    public GameObject hazard;
+    public GameObject[] hazards;
     public Vector3 spawnValues;
     public int hazardCount;
     public float spawnWait;
@@ -51,6 +52,7 @@ public class GameController : MonoBehaviour
         while (true) {
             for (int i = 0; i < hazardCount; i++)
             {
+                GameObject hazard = hazards[Random.Range(0,hazards.Length)];
                 Vector3 spawnPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
                 Quaternion spawnRotation = Quaternion.identity;
                 Instantiate(hazard, spawnPosition, spawnRotation);
@@ -82,5 +84,11 @@ public class GameController : MonoBehaviour
     {
         gameOverText.text = "GAME OVER";
         gameOver = true;
+        exitButton.SetActive(true);
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 }
