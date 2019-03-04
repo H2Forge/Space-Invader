@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        //Fire Projectile
         myTime += Time.deltaTime;
 
         if (Input.GetButton("Fire1") && myTime > nextFire)
@@ -44,6 +45,7 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        //Move Player
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
